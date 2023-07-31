@@ -43,7 +43,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface {
             $user = Auth::user();
             $accessToken = $user->createToken('token')->plainTextToken;
             return response()->json(['access_token' => $accessToken], 200);
-            
         } else {
             return response()->json(['message' => 'invalid'], 401);
         }
@@ -53,7 +52,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface {
         // Auth::logout();
         // $request->session()->invalidate();
         // $request->session()->regenerateToken();
-        $request->user()->tokens()->delete();
+        // $request->user()->tokens()->delete();
         return response()->json(['message' => 'Logged out successfully'], 200);
     }
     

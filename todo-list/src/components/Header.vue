@@ -62,12 +62,31 @@
             </li>
           </ul>
         </div>
-
-        <a
+        <div class="dropdown">
+          <a
           href="#"
           class="text-sm font-semibold leading-6 text-white no-underline"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
           >Features</a
         >
+        <ul
+            class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          >
+            <li v-for="item in post" :key="item.id">
+              <router-link :to="{ name: 'post', params: { id: item.id } }">
+                <a
+                  class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
+                  href="#"
+                >
+                  {{ item.post_name }}
+                </a>
+              </router-link>
+            </li>
+          </ul>
+        </div>
+        
         <a
           href="#"
           class="text-sm font-semibold leading-6 text-white no-underline"
@@ -88,6 +107,13 @@
             >Log in <span aria-hidden="true">&rarr;</span></a
           >
         </router-link>
+        <a
+          href="#"
+          class="text-sm font-semibold leading-6 text-white no-underline"
+          v-if="access_state"
+          @click="logout"
+          >Log out</a
+        >
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -134,6 +160,7 @@ export default {
   data() {
     return {
       product: [],
+      post: [],
       access_state: true,
     };
   },
@@ -146,6 +173,8 @@ export default {
         const res = (await axios.get("http://127.0.0.1:8000/api/product")).data;
         console.log(res);
         this.product = res;
+        const resPost = (await axios.get("http://127.0.0.1:8000/api/post")).data;
+        this.post = resPost;
         if (localStorage.getItem("access_token") != null) {
           this.access_state = true;
         } else {
@@ -159,6 +188,7 @@ export default {
       try {
         await axios.post("http://127.0.0.1:8000/api/logout");
         localStorage.removeItem("access_token");
+        this.fetchData();
       } catch (e) {
         console.log(e);
       }

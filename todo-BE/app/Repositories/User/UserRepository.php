@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\Contracts\HasApiTokens;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface {
+
     public function getModel() {
         return User::class;
     }
@@ -24,26 +26,35 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface {
         return $user;
     }
 
-    public function login(Request $request): Response {
-        $login = $request->all();
+    public function login(Request $request) {
+        // $login = $request->all();
+        // if(Auth::attempt($login)) {
+        //     return response([
+        //         'message' => 'success',
+        //     ]);
+        // } else {
+        //     return response([
+        //         'message' => 'failed',
+        //     ]);
+        // }
+        $login = $request->only('email', 'password');
         if(Auth::attempt($login)) {
-            return response([
-                'message' => 'success',
-            ]);
+            /** @var \App\Models\User $user **/
+            $user = Auth::user();
+            $accessToken = $user->createToken('token')->plainTextToken;
+            return response()->json(['access_token' => $accessToken], 200);
+            
         } else {
-            return response([
-                'message' => 'failed',
-            ]);
+            return response()->json(['message' => 'invalid'], 401);
         }
     }
 
-    public function logout(Request $request): Response {
-        Auth::logout();
+    public function logout(Request $request) {
+        // Auth::logout();
         // $request->session()->invalidate();
         // $request->session()->regenerateToken();
-        return response([
-            'message' => 'success',
-        ]);
+        $request->user()->tokens()->delete();
+        return response()->json(['message' => 'Logged out successfully'], 200);
     }
     
 }

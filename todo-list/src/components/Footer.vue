@@ -33,7 +33,7 @@
           >Partners</a
         >
       </div>
-      <div class="text-sm font-light leading-6">
+      <div class="text-sm font-light leading-6 m-auto">
         © 2020 Your Company, Inc. All rights reserved.
       </div>
       <div class="flex justify-center">

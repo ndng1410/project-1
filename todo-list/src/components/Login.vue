@@ -6,7 +6,7 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="#" method="POST">
+    <form class="space-y-6" @submit.prevent="proceedLogin">
       <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
         <div class="mt-2">
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <button @click="proceedLogin" type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
       </div>
     </form>
 
@@ -58,12 +58,13 @@ export default {
                 alert("error password")
             } else {
                 try {
-                    await axios.post("http://127.0.0.1:8000/api/login", {
+                    const res = await axios.post("http://127.0.0.1:8000/api/login", {
                         email: this.inputEmail,
                         password: this.inputPassword,
                     })
-                    alert("success login");
-                    // this.$router.push('/')
+                    const access_token = res.data.access_token;
+                    localStorage.setItem('access_token', access_token);
+                    this.$router.push('/')
                 } catch (e) {
                     console.log(e)
                 }

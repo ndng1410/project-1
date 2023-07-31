@@ -1,32 +1,25 @@
 <template>
   <div id="app" class="min-h-screen relative">
     <!-- <Header></Header> -->
-    <!-- <router-link to="/"></router-link>
-    <router-view /> -->
+    <router-view />
     <!-- <Newsletter></Newsletter>
     <Footer></Footer> -->
-    <Login></Login>
   </div>
 </template>
 
 <script>
 // import Header from "./components/Header.vue"
 // import Footer from "./components/Footer.vue"
-// import Body from "./components/Body.vue"
 // import Newsletter from "./components/Newsletter.vue";
-import Login from './components/Login.vue';
-import { EventBus } from "./main";
-// import Login from './components/Login.vue'
 
+import { EventBus } from "./main"
 
 export default {
   name: "App",
   components: {
     // Header,
     // Footer,
-    // // Body,
     // Newsletter,
-    Login
   },
   mounted() {
     EventBus.$on("addNewTaskItem", (object) => this.onReceive(object));

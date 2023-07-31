@@ -48,10 +48,9 @@
           >
           <ul
             class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-          ><li v-for="item in product" :key="item.id">
-            <router-link
-              :to="{ name: 'product', params: { id: item.id}}"
-            >
+          >
+            <li v-for="item in product" :key="item.id">
+              <router-link :to="{ name: 'product', params: { id: item.id } }">
                 <a
                   class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
                   href="#"
@@ -59,12 +58,8 @@
                   {{ item.products_name }}
                   <span class="badge bg-secondary">{{ item.quantity }}</span>
                 </a>
-               </router-link> 
-          </li>
-            
-              
-
-            
+              </router-link>
+            </li>
           </ul>
         </div>
 
@@ -85,11 +80,14 @@
         >
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a
-          href="#"
-          class="text-sm font-semibold leading-6 text-white no-underline"
-          >Log in <span aria-hidden="true">&rarr;</span></a
-        >
+        <router-link to="/login" class="no-underline">
+          <a
+            href="#"
+            class="text-sm font-semibold leading-6 text-white no-underline"
+            v-if="!access_state"
+            >Log in <span aria-hidden="true">&rarr;</span></a
+          >
+        </router-link>
       </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -136,6 +134,7 @@ export default {
   data() {
     return {
       product: [],
+      access_state: true,
     };
   },
   mounted() {
@@ -147,6 +146,19 @@ export default {
         const res = (await axios.get("http://127.0.0.1:8000/api/product")).data;
         console.log(res);
         this.product = res;
+        if (localStorage.getItem("access_token") != null) {
+          this.access_state = true;
+        } else {
+          this.access_state = false;
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    async logout() {
+      try {
+        await axios.post("http://127.0.0.1:8000/api/logout");
+        localStorage.removeItem("access_token");
       } catch (e) {
         console.log(e);
       }

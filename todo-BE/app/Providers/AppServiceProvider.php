@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             \App\Repositories\Email\EmailRepositoryInterface::class,
             \App\Repositories\Email\EmailRepository::class);
+        $this->app->singleton(
+            \App\Repositories\Post\PostRepositoryInterface::class,
+            \App\Repositories\Post\PostRepository::class);
     }
 
     /**

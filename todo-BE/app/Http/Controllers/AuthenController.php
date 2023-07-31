@@ -14,15 +14,15 @@ class AuthenController extends Controller
 {
     public function login(Request $request)
     {
-        $login = $request->all();
+        // $login = $request->all();
+        $login = $request->only('email', 'password');
         if(Auth::attempt($login)) {
-            return response([
-                'message' => 'success',
-            ]);
+            $user = Auth::user();
+            $accessToken = $user->createToken('token')->plainTextToken;
+            return response()->json(['access_token' => $accessToken], 200);
+            
         } else {
-            return response([
-                'message' => 'fail',
-            ]);
+            return response()->json(['message' => 'invalid'], 401);
         }
     }
 

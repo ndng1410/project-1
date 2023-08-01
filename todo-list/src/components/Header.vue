@@ -6,12 +6,14 @@
     >
       <div class="flex lg:flex-1">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img
-            class="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt=""
-          />
+          <router-link to="/">
+            <span class="sr-only">Your Company</span>
+            <img
+              class="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              alt=""
+            />
+          </router-link>
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -64,14 +66,14 @@
         </div>
         <div class="dropdown">
           <a
-          href="#"
-          class="text-sm font-semibold leading-6 text-white no-underline"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          >Features</a
-        >
-        <ul
+            href="#"
+            class="text-sm font-semibold leading-6 text-white no-underline"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            >Features</a
+          >
+          <ul
             class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           >
             <li v-for="item in post" :key="item.id">
@@ -86,11 +88,12 @@
             </li>
           </ul>
         </div>
-        
+
         <a
           href="#"
           class="text-sm font-semibold leading-6 text-white no-underline"
-          >Marketplace</a
+        >
+          <router-link to="/market">Marketplace</router-link></a
         >
         <a
           href="#"

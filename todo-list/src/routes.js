@@ -6,6 +6,7 @@ import Body from './components/Body.vue';
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import ErrorPage from './components/ErrorPage.vue';
+import MarketPage from './components/Market.vue';
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ const router = new VueRouter({
             path: '/404-not-found',
             component: ErrorPage,
             name: 'error',
+        },
+        {
+            path: '/market',
+            component: MarketPage,
+            name: 'market',
         }
     ]
 });

@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header></Header>
+    <Breadcrumb />
     <div>
       <div class="lg:max-w-full m-4">
         <h1 class="flex justify-center mb-4">
@@ -151,12 +152,14 @@
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import Breadcrumb from "./trashcan/Breadcrumb.vue";
 
 export default {
   name: "postPage",
   components: {
     Header,
     Footer,
+    Breadcrumb,
   },
   data() {
     return {

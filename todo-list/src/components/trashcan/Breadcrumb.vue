@@ -1,10 +1,10 @@
 <template>
-  <nav class="flex" aria-label="Breadcrumb">
-    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+  <nav class="flex p-4 mx-auto max-w-2xl lg:max-w-7xl" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3 m-0 p-0">
       <li class="inline-flex items-center">
         <a
           href="#"
-          class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+          class="inline-flex items-center text-lg font-medium text-white hover:text-blue-600 no-underline font-mono"
         >
           <svg
             class="w-3 h-3 mr-2.5"
@@ -20,10 +20,10 @@
           Home
         </a>
       </li>
-      <li>
+      <li v-for="(item, index) in breadcrumbItems" :key="index" class="capitalize">
         <div class="flex items-center">
           <svg
-            class="w-3 h-3 text-gray-400 mx-1"
+            class="w-3 h-3 text-white mx-1"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,31 +39,8 @@
           </svg>
           <a
             href="#"
-            class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
-            >Projects</a
-          >
-        </div>
-      </li>
-      <li aria-current="page">
-        <div class="flex items-center">
-          <svg
-            class="w-3 h-3 text-gray-400 mx-1"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 6 10"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 9 4-4-4-4"
-            />
-          </svg>
-          <span
-            class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
-            >Flowbite</span
+            class="ml-1 text-lg font-medium text-white hover:text-blue-600 md:ml-2 font-mono no-underline"
+            >{{ item }}</a
           >
         </div>
       </li>
@@ -74,6 +51,24 @@
 <script>
 export default {
   name: "breadCrumb",
+  data() {
+    return {
+      breadcrumbItems: [],
+    }
+  },
+  created() {
+    this.handleURL()
+  },
+  methods: {
+    handleURL() {
+      const currentURL = window.location.pathname;
+      const urlParts = currentURL.split("/").filter(Boolean);
+      for (let i = 0; i < urlParts.length; i++) {
+        this.breadcrumbItems.push(urlParts[i]);
+      }
+      console.log(this.breadcrumbItems);
+    }
+  }
 };
 </script>
 

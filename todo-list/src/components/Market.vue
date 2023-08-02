@@ -1,8 +1,9 @@
 <template>
   <div>
     <Header />
+    <Breadcrumb />
     <div
-      class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
+      class="mx-auto max-w-2xl p-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
     >
       <h2 class="text-2xl font-bold tracking-tight text-white font-mono">
         Danh sách
@@ -12,11 +13,11 @@
       >
         <div class="group relative" v-for="item in products" :key="item.id">
           <div
-            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
+            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-80 lg:h-80 transition duration-300 group-hover:scale-105"
           >
             <img
               :src="item.url_img"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+              class="h-full w-full object-cover object-center lg:h-full lg:w-full "
             />
           </div>
           <div class="mt-4 flex justify-between text-white font-mono font-bold">
@@ -27,7 +28,7 @@
                 </a>
               <p class="mt-1 text-xs">Black</p>
             </div>
-            <p class="mt-1 text-sm">${{ item.price }}/item</p>
+            <p class="mt-1 text-sm">${{ item.price }}</p>
           </div>
         </div>
       </div>
@@ -40,12 +41,14 @@
 import axios from "axios";
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
+import Breadcrumb from "./trashcan/Breadcrumb.vue";
 
 export default {
   name: "marketPage",
   components: {
     Header,
     Footer,
+    Breadcrumb,
   },
   data() {
     return {

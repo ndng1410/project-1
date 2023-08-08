@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Task\TaskRepositoryInterface;
-use Illuminate\Support\Facades\DB;
-use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -21,8 +19,11 @@ class TaskController extends Controller
     public function index()
     {
         //
-        $index = DB::table('tasks')->paginate(3);
-        return $index; 
+        return $this->taskRepository->getAll();
+    }
+
+    public function getTaskAll() {
+        return $this->taskRepository->getTaskAll();
     }
 
     /**
@@ -89,5 +90,9 @@ class TaskController extends Controller
         return [
             'status' => 'success',
         ];
+    }
+
+    public function getTaskByDate(Request $request) {
+        return $this->taskRepository->getTaskByDate($request);
     }
 }

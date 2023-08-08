@@ -173,9 +173,6 @@ export default {
   methods: {
     async fetchData() {
       try {
-        const res = (await axios.get("http://127.0.0.1:8000/api/product")).data;
-        console.log(res);
-        this.product = res;
         const resPost = (await axios.get("http://127.0.0.1:8000/api/post")).data;
         this.post = resPost;
         if (localStorage.getItem("access_token") != null) {

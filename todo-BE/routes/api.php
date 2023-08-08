@@ -31,9 +31,11 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 Route::get('/task', [TaskController::class, 'index']);
+Route::get('/taskAll', [TaskController::class, 'getTaskAll']);
 Route::post('/tasks', [TaskController::class, 'store']);
 Route::put('/tasks/{id}', [TaskController::class, 'update']);
 Route::delete('/task/delete/{id}', [TaskController::class, 'destroy']);
+Route::get('/task-date', [TaskController::class, 'getTaskByDate']);
 
 Route::get('/product', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
@@ -45,3 +47,4 @@ Route::get('/post', [PostController::class, 'index']);
 Route::post('/posts', [PostController::class, 'store']);
 Route::put('/posts/{id}', [PostController::class, 'update']);
 Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+

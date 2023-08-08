@@ -3,7 +3,10 @@
 namespace App\Repositories\Task;
 
 use App\Repositories\RepositoryInterface;
+use Illuminate\Http\Request;
 
 interface TaskRepositoryInterface extends RepositoryInterface {
-    public function getProduct();
+    public function getTaskAll();
+
+    public function getTaskByDate(Request $request);
 }

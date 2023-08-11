@@ -95,4 +95,18 @@ class TaskController extends Controller
     public function getTaskByDate(Request $request) {
         return $this->taskRepository->getTaskByDate($request);
     }
+
+    public function taskCompleted(string $id) {
+        $this->taskRepository->statusCompleted($id);
+        return [
+            'status' => 'success',
+        ];
+    }
+
+    public function taskInCompleted(string $id) {
+        $this->taskRepository->statusInCompleted($id);
+        return [
+            'status' => 'success',
+        ];
+    }
 }

@@ -1,5 +1,5 @@
 <template>
-  <h1>hi {{ this.id }}</h1>
+    <h1>hi {{ this.id }}</h1>
 </template>
 
 <script>
@@ -8,20 +8,18 @@ export default {
     data() {
         return {
             id: null,
-        }
+        };
     },
     mounted() {
-        this.id = this.$route.params.id
+        this.id = this.$route.params.id;
     },
     watch: {
-        '$route.params.id': function(newVal) {
+        "$route.params.id": function (newVal) {
             this.id = newVal;
             console.log(this.id);
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

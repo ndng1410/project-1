@@ -36,6 +36,8 @@ Route::post('/tasks', [TaskController::class, 'store']);
 Route::put('/tasks/{id}', [TaskController::class, 'update']);
 Route::delete('/task/delete/{id}', [TaskController::class, 'destroy']);
 Route::get('/task-date', [TaskController::class, 'getTaskByDate']);
+Route::get('/task/completed/{id}', [TaskController::class, 'taskCompleted']);
+Route::get('/task/incompleted/{id}', [TaskController::class, 'taskInCompleted']);
 
 Route::get('/product', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);

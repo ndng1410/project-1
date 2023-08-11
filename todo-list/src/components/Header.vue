@@ -1,127 +1,136 @@
 <template>
-  <header class="bg-slate-800">
-    <nav
-      class="flex items-center justify-between p-4 lg:px-8"
-      aria-label="Global"
-    >
-      <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
-          <router-link to="/">
-            <span class="sr-only">Your Company</span>
-            <img
-              class="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
-          </router-link>
-        </a>
-      </div>
-      <div class="flex lg:hidden">
-        <button
-          type="button"
-          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+    <header class="bg-slate-800">
+        <nav
+            class="flex items-center justify-between p-4 lg:px-8"
+            aria-label="Global"
         >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">
-        <div class="dropdown">
-          <a
-            class="text-sm font-semibold leading-6 text-white no-underline"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            >Product</a
-          >
-          <ul
-            class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-          >
-            <li v-for="item in product" :key="item.id">
-              <router-link :to="{ name: 'product', params: { id: item.id } }">
-                <a
-                  class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
-                  href="#"
-                >
-                  {{ item.products_name }}
-                  <span class="badge bg-secondary">{{ item.quantity }}</span>
+            <div class="flex lg:flex-1">
+                <a href="#" class="-m-1.5 p-1.5">
+                    <router-link to="/">
+                        <span class="sr-only">Your Company</span>
+                        <img
+                            class="h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            alt=""
+                        />
+                    </router-link>
                 </a>
-              </router-link>
-            </li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <a
-            href="#"
-            class="text-sm font-semibold leading-6 text-white no-underline"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            >Features</a
-          >
-          <ul
-            class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-          >
-            <li v-for="item in post" :key="item.id">
-              <router-link :to="{ name: 'post', params: { id: item.id } }">
-                <a
-                  class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
-                  href="#"
+            </div>
+            <div class="flex lg:hidden">
+                <button
+                    type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
                 >
-                  {{ item.post_name }}
-                </a>
-              </router-link>
-            </li>
-          </ul>
-        </div>
+                    <span class="sr-only">Open main menu</span>
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                <div class="dropdown">
+                    <a
+                        class="text-sm font-semibold leading-6 text-white no-underline"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >Product</a
+                    >
+                    <ul
+                        class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    >
+                        <li v-for="item in product" :key="item.id">
+                            <router-link
+                                :to="{
+                                    name: 'product',
+                                    params: { id: item.id },
+                                }"
+                            >
+                                <a
+                                    class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
+                                    href="#"
+                                >
+                                    {{ item.products_name }}
+                                    <span class="badge bg-secondary">{{
+                                        item.quantity
+                                    }}</span>
+                                </a>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a
+                        href="#"
+                        class="text-sm font-semibold leading-6 text-white no-underline"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        >Features</a
+                    >
+                    <ul
+                        class="dropdown-menu absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    >
+                        <li v-for="item in post" :key="item.id">
+                            <router-link
+                                :to="{ name: 'post', params: { id: item.id } }"
+                            >
+                                <a
+                                    class="dropdown-item text-gray-700 block px-4 py-2 text-sm"
+                                    href="#"
+                                >
+                                    {{ item.post_name }}
+                                </a>
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
 
-        <a
-          href="#"
-          class="text-sm font-semibold leading-6 text-white no-underline"
-        >
-          <router-link to="/market">Marketplace</router-link></a
-        >
-        <a
-          href="#"
-          class="text-sm font-semibold leading-6 text-white no-underline"
-          >Company</a
-        >
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <router-link to="/login" class="no-underline">
-          <a
-            href="#"
-            class="text-sm font-semibold leading-6 text-white no-underline"
-            v-if="!access_state"
-            >Log in <span aria-hidden="true">&rarr;</span></a
-          >
-        </router-link>
-        <a
-          href="#"
-          class="text-sm font-semibold leading-6 text-white no-underline"
-          v-if="access_state"
-          @click="logout"
-          >Log out</a
-        >
-      </div>
-    </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <!-- Background backdrop, show/hide based on slide-over state. -->
-    <!-- <div class="lg:hidden" role="dialog" aria-modal="true">
+                <a
+                    href="#"
+                    class="text-sm font-semibold leading-6 text-white no-underline"
+                >
+                    <router-link to="/market">Marketplace</router-link></a
+                >
+                <a
+                    href="#"
+                    class="text-sm font-semibold leading-6 text-white no-underline"
+                    >Company</a
+                >
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <router-link to="/login" class="no-underline">
+                    <a
+                        href="#"
+                        class="text-sm font-semibold leading-6 text-white no-underline"
+                        v-if="!access_state"
+                        >Log in <span aria-hidden="true">&rarr;</span></a
+                    >
+                </router-link>
+                <a
+                    href="#"
+                    class="text-sm font-semibold leading-6 text-white no-underline"
+                    v-if="access_state"
+                    @click="logout"
+                    >Log out</a
+                >
+            </div>
+        </nav>
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <!-- <div class="lg:hidden" role="dialog" aria-modal="true">
       
       <div class="fixed inset-0 z-50"></div>
       <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -152,48 +161,50 @@
         </div>
       </div>
     </div> -->
-  </header>
+    </header>
 </template>
 
 <script>
 import axios from "axios";
 
 export default {
-  name: "headerPage",
-  data() {
-    return {
-      product: [],
-      post: [],
-      access_state: true,
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      try {
-        const resPost = (await axios.get("http://127.0.0.1:8000/api/post")).data;
-        this.post = resPost;
-        if (localStorage.getItem("access_token") != null) {
-          this.access_state = true;
-        } else {
-          this.access_state = false;
-        }
-      } catch (e) {
-        console.log(e);
-      }
+    name: "headerPage",
+    data() {
+        return {
+            product: [],
+            post: [],
+            access_state: true,
+        };
     },
-    async logout() {
-      try {
-        await axios.post("http://127.0.0.1:8000/api/logout");
-        localStorage.removeItem("access_token");
+    mounted() {
         this.fetchData();
-      } catch (e) {
-        console.log(e);
-      }
     },
-  },
+    methods: {
+        async fetchData() {
+            try {
+                const resPost = (
+                    await axios.get("http://127.0.0.1:8000/api/post")
+                ).data;
+                this.post = resPost;
+                if (localStorage.getItem("access_token") != null) {
+                    this.access_state = true;
+                } else {
+                    this.access_state = false;
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        },
+        async logout() {
+            try {
+                await axios.post("http://127.0.0.1:8000/api/logout");
+                localStorage.removeItem("access_token");
+                this.fetchData();
+            } catch (e) {
+                console.log(e);
+            }
+        },
+    },
 };
 </script>
 

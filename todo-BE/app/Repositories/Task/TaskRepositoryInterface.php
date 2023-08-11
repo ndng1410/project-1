@@ -9,4 +9,9 @@ interface TaskRepositoryInterface extends RepositoryInterface {
     public function getTaskAll();
 
     public function getTaskByDate(Request $request);
+
+    public function statusCompleted($id);
+
+    public function statusInCompleted($id);
+
 }

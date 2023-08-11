@@ -23,5 +23,15 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface {
         $data = $this->model->whereDate('created_at', $date)->get();
         return response()->json($data);
     }
+
+    public function statusCompleted($id) {
+        $status = $this->model->findOrFail($id);
+        return $status->update(['status' => 1]);
+    }
+
+    public function statusInCompleted($id) {
+        $status = $this->model->findOrFail($id);
+        return $status->update(['status' => 0]);
+    }
 }
 
